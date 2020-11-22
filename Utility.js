@@ -11,14 +11,14 @@ class Linkedlist {
         this.size = 0;
     }
     /** Insert first node */
-    insertFirst(data) {
+    insertFirst = (data) => {
         this.head = new Node(data, this.head);
         this.size++;
         return this.head;
     }
 
     /** Print list data */
-    printListData() {
+    printListData = () => {
         let current = this.head;
         while (current) {
             console.log(current.data);
@@ -27,7 +27,7 @@ class Linkedlist {
         }
     }
     /** Insert last node */
-    insertLast(data) {
+    insertLast = (data) => {
         let node = new Node(data);
         let current;
         if(!this.head){
@@ -41,6 +41,31 @@ class Linkedlist {
             current.next = node;
         }
         this.size++; 
+    }
+    /** Insert at index */
+    insertAt= (data, index) => { 
+        if (index > 0 && index > this.size) {
+            return;
+        }
+        if (index === 0) {
+            this.insertFirst(data, this.head);
+            return;
+        }
+        const node = new Node(data);
+        let current, previous;
+
+        current = this.head;
+        let count = 0;
+
+        while(count < index){
+            previous = current; //node before index
+            count++;
+            current = current.next; // Node after index
+        }
+        node.next = current;
+        previous.next = node;
+
+        this.size++;
     }
 }
 module.exports = new Linkedlist();

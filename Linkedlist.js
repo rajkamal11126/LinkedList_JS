@@ -4,7 +4,7 @@ choice = function () {
     let isTerminated = true;
     while (isTerminated == true) {
         /** take choice input from the user */
-        let choice = readlineSync.question("\nEner your choice:\n1.firstNode\n2.lastNode\n3.print\n4.exit\n");
+        let choice = readlineSync.question("\nEner your choice:\n1.firstNode\n2.lastNode\n3.insertAtIndex\n4.print\n5.exit\n");
         switch (choice) {
             case '1':
                 let firstPosition = readlineSync.question("Enter the element in first position: ");
@@ -15,9 +15,14 @@ choice = function () {
                 Utility.insertLast(lastPosition);
                 break;
             case '3':
-                Utility.printListData();
+                let insertElement = readlineSync.question("Enter the element: ");
+                let index = readlineSync.question("Enter the index: ");
+                Utility.insertAt(insertElement, index );
                 break;
             case '4':
+                Utility.printListData();
+                break;
+            case '5':
                 isTerminated = false;
                 break;
             default: console.log("please enter correct option");
