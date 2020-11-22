@@ -15,5 +15,15 @@ class Linkedlist {
         this.head = new Node(data, this.head);
         return this;
     }
+
+    /** Print list data */
+    printListData() {
+        let current = this.head;
+        while (current) {
+            console.log(current.data);
+            current = current.next;
+
+        }
+    }
 }
 module.exports = new Linkedlist();
