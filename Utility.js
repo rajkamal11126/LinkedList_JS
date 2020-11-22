@@ -13,7 +13,8 @@ class Linkedlist {
     /** Insert first node */
     insertFirst(data) {
         this.head = new Node(data, this.head);
-        return this;
+        this.size++;
+        return this.head;
     }
 
     /** Print list data */
@@ -24,6 +25,22 @@ class Linkedlist {
             current = current.next;
 
         }
+    }
+    /** Insert last node */
+    insertLast(data) {
+        let node = new Node(data);
+        let current;
+        if(!this.head){
+            this.head = node;
+        } else {
+            current = this.head;
+
+            while(current.next){
+                current = current.next;
+            }
+            current.next = node;
+        }
+        this.size++; 
     }
 }
 module.exports = new Linkedlist();
