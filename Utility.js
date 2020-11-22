@@ -30,20 +30,20 @@ class Linkedlist {
     insertLast = (data) => {
         let node = new Node(data);
         let current;
-        if(!this.head){
+        if (!this.head) {
             this.head = node;
         } else {
             current = this.head;
 
-            while(current.next){
+            while (current.next) {
                 current = current.next;
             }
             current.next = node;
         }
-        this.size++; 
+        this.size++;
     }
     /** Insert at index */
-    insertAt= (data, index) => { 
+    insertAt = (data, index) => {
         if (index > 0 && index > this.size) {
             return;
         }
@@ -57,7 +57,7 @@ class Linkedlist {
         current = this.head;
         let count = 0;
 
-        while(count < index){
+        while (count < index) {
             previous = current; //node before index
             count++;
             current = current.next; // Node after index
@@ -66,6 +66,30 @@ class Linkedlist {
         previous.next = node;
 
         this.size++;
+    }
+    /**Remove at index */
+    removeAt(index) {
+        if (index > 0 && index > this.size) {
+            return;
+        }
+
+        let current = this.head;
+        let previous;
+        let count = 0;
+
+        // Remove first
+        if (index === 0) {
+            this.head = current.next;
+        } else {
+            while (count < index) {
+                count++;
+                previous = current;
+                current = current.next;
+            }
+
+            previous.next = current.next;
+        }
+        this.size--;
     }
 }
 module.exports = new Linkedlist();
